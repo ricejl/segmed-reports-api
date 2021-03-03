@@ -11,6 +11,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using SegmedReportsApi.Repositories;
+using SegmedReportsApi.Services;
 
 namespace SegmedReportsApi
 {
@@ -36,6 +38,8 @@ namespace SegmedReportsApi
                 });
             });
             services.AddControllers();
+            services.AddSingleton<ReportsService>();
+            services.AddSingleton<ReportsRepository>();
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "SegmedReportsApi", Version = "v1" });
